@@ -7,4 +7,6 @@
   :main ^:skip-aot gp-birthday-greeting.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
-                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}})
+                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}
+             :reveal {:dependencies [[vlaaad/reveal "1.3.196"]]
+                      :repl-options {:nrepl-middleware [vlaaad.reveal.nrepl/middleware]}}})

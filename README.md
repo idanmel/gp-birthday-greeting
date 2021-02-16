@@ -6,6 +6,20 @@ https://www.remotemobprogramming.org/
 Also, it helps if everyone uses:
 https://mob.sh/
 
+##
+https://codingdojo.org/kata/birthday-greetings/
+
+Goal - generate a birthday greeting email from a list of friends.
+
+What do we know?
+We have a text file of csv like data.
+We need a function to parse a single record
+Have a function that takes a record and returns which date it should be sent on?
+Function -> Given a friends db and a date, return birthdee(s)?.
+Given birthdees and some template, generate an email.
+Given an email template, and an email service, send the emails or queue them or whatever :-)
+
+
 ## Usage
 
 FIXME: explanation

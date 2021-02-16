@@ -1,0 +1,84 @@
+; This is the Calva evaluation results output window.
+; TIPS: The keyboard shortcut `ctrl+alt+c o` shows and focuses this window
+;   when connected to a REPL session.
+; Please see https://calva.io/output/ for more info.
+; Happy coding! ♥️
+
+; Jacking in...
+; Starting Jack-in Terminal: lein update-in :dependencies conj '[nrepl,"0.8.3"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.25.8"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- with-profile +uberjar repl :headless
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS: 
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉gp-birthday-greeting.core꞉>  ; Use `alt+enter` to evaluate
+; Jack-in done.
+clj꞉gp-birthday-greeting.core꞉> 
+; Syntax error compiling at (test/gp_birthday_greeting/core_test.clj:5:1).
+; Unable to resolve symbol: deftest in this context
+clj꞉gp-birthday-greeting.core-test꞉> 
+#'gp-birthday-greeting.core-test/friend
+clj꞉gp-birthday-greeting.core-test꞉> 
+#'gp-birthday-greeting.core-test/friend
+clj꞉gp-birthday-greeting.core-test꞉> 
+; Syntax error compiling def at (test/gp_birthday_greeting/core_test.clj:11:1).
+; Too many arguments to def
+clj꞉gp-birthday-greeting.core-test꞉> 
+; Syntax error compiling def at (test/gp_birthday_greeting/core_test.clj:11:1).
+; Too many arguments to def
+clj꞉gp-birthday-greeting.core-test꞉> 
+; Syntax error compiling at (test/gp_birthday_greeting/core_test.clj:12:3).
+; No such namespace: str
+clj꞉gp-birthday-greeting.core-test꞉> 
+; Syntax error compiling at (test/gp_birthday_greeting/core_test.clj:12:3).
+; No such namespace: str
+clj꞉gp-birthday-greeting.core-test꞉> 
+; Syntax error compiling at (test/gp_birthday_greeting/core_test.clj:13:3).
+; No such namespace: str
+clj꞉gp-birthday-greeting.core-test꞉> 
+; Syntax error compiling at (test/gp_birthday_greeting/core_test.clj:13:3).
+; Unable to resolve symbol: split in this context
+clj꞉gp-birthday-greeting.core-test꞉> 
+; Syntax error compiling at (test/gp_birthday_greeting/core_test.clj:13:3).
+; No such namespace: str
+clj꞉gp-birthday-greeting.core-test꞉> 
+nil
+clj꞉gp-birthday-greeting.core-test꞉> 
+nil
+clj꞉gp-birthday-greeting.core꞉> 
+Hello kata
+nil
+clj꞉gp-birthday-greeting.core꞉> 
+#'gp-birthday-greeting.core/friend
+clj꞉gp-birthday-greeting.core꞉> 
+; Execution error (ClassCastException) at gp-birthday-greeting.core/eval7155 (form-init13469138981146927129.clj:15).
+; class java.lang.String cannot be cast to class clojure.lang.IFn (java.lang.String is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'app')
+clj꞉gp-birthday-greeting.core꞉> 
+Hannah, Ferguson, 1952/01/19, hannah.ferguson@fakemail.com
+nil
+clj꞉gp-birthday-greeting.core꞉> 
+; Syntax error compiling at (src/gp_birthday_greeting/core.clj:18:3).
+; No such namespace: str
+clj꞉gp-birthday-greeting.core꞉> 
+nil
+clj꞉gp-birthday-greeting.core꞉> 
+#'gp-birthday-greeting.core/split-line
+clj꞉gp-birthday-greeting.core꞉> 
+["Hannah" " Ferguson" " 1952/01/19" " hannah.ferguson@fakemail.com"]
+clj꞉gp-birthday-greeting.core꞉> 
+#'gp-birthday-greeting.core/parse-line
+clj꞉gp-birthday-greeting.core꞉> 
+["Hannah" " Ferguson" " 1952/01/19" " hannah.ferguson@fakemail.com"]
+clj꞉gp-birthday-greeting.core꞉> 
+#'gp-birthday-greeting.core/parse-line
+clj꞉gp-birthday-greeting.core꞉> 
+{:firstname "Hannah", :lastname " Ferguson", :dob " 1952/01/19", :email " hannah.ferguson@fakemail.com"}
+clj꞉gp-birthday-greeting.core꞉> 
+#'gp-birthday-greeting.core/split-line
+clj꞉gp-birthday-greeting.core꞉> 
+["Hannah, Ferguson, 1952/01/19, hannah.ferguson@fakemail.com"]
+clj꞉gp-birthday-greeting.core꞉> 
