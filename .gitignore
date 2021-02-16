@@ -1,3 +1,4 @@
+.idea/
 /target
 /classes
 /checkouts
@@ -11,3 +12,4 @@ pom.xml.asc
 /.prepl-port
 .hgignore
 .hg/
+gp-birthday-greeting.iml
