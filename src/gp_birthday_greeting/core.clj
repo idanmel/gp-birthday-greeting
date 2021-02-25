@@ -24,7 +24,13 @@
   (let [{:keys [:month :day]} birthdee]
     {:month month :day (dec day)}))
 
-(defn template [] "I am template")
+(def template "Happy Birthday ${firstname} ${lastname}, have a good one!!")
+
+(defn filled-email-template [template birthdee]
+  (-> 
+   template
+   (str/replace "${firstname}" (:firstname birthdee))
+   (str/replace "${lastname}" (:lastname birthdee))))
 
 (defn reminder? [birthdee date]
   (let [{birthdee-month :month
@@ -57,13 +63,31 @@
                          (str/split-lines)
                          (map parse-line)))
 
-(defn matching-birthdee? [friend day])
+(defn matching-birthdee? [friend date]
+  ;; TODO Add logic to handle the next month date and 29 Feb date.
+  (and (= (:month friend) (:month date))
+       (= (:day friend) (:day date))))
+
+(defn today []
+  (let [date (java.util.Date.)]
+    {:month (inc (.getMonth date))
+     :day (.getDate date)}))
+
 
 ;; friends == path to the file
 ;; today == today's date
-(defn send-emails! [friends today template]
-  (let [db (parse-file friends)]))
-;; TODO: We want to begin from here on next session
+(defn send-emails!
+  ([friends-file]
+   (send-emails! friends-file (today) template))
+  ([friends-file date]
+   (send-emails! friends-file date template))
+  ([friends-file date template]
+   (->> friends-file
+        parse-file
+        (filter #(matching-birthdee? % date))
+        (map #(filled-email-template template %))
+        (map prn)
+        doall)))
 
 
 (comment
@@ -71,9 +95,20 @@
   (split-line friend)
   (parse-line friend)
 
+
+
   (str/split "one, two, three" #"\s*,\s*")
   (parse-dob "2000/01/")
   (reminder? (parse-line friend) {:month 1 :day 19})
   (parse-file (io/resource "friends.txt"))
-  
+
+  (do
+    (println "\n\n\n")
+    (send-emails! (io/resource "friends.txt"))
+    (println "\n\n\n")
+    (send-emails! (io/resource "friends.txt")
+                  {:month 2 :day 10} template))
+
+  (filled-email-template template (parse-line friend))
+   
   ,)
