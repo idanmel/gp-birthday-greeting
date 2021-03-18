@@ -86,10 +86,33 @@
                          (str/split-lines)
                          (map parse-line)))
 
+
 (defn matching-birthdee? [friend date]
-  ;; TODO Add logic to handle the next month date and 29 Feb date.
-  (and (= (:month friend) (:month date))
-       (= (:day friend) (:day date))))
+  ;; TODO Add logic to handle Leap Year for sending reminder.
+  (or (and (= 2 (:month date))
+           (= 28 (:day date))
+           (= 2 (:month friend))
+           (= 29 (:day friend)))
+      (and (= (:month friend) (:month date))
+           (= (:day friend) (:day date)))))
+
+(defn reminder-date [{:keys [:month :day]}]
+  (cond
+    (and (= 2 month)
+         (= 29 day))
+    {:month 2 :day 28}
+
+    :else {:month month :day day}))
+
+(defn group-by-reminder-dates [file]
+  (->>
+   file
+   parse-file
+   (group-by reminder-date)))
+
+(comment 
+  (reminder-date {:month 2 :day 28})
+  ,)
 
 (defn today []
   (let [date (java.util.Date.)]
@@ -141,11 +164,27 @@
   (reminder? (parse-line friend) {:month 1 :day 19})
   (parse-file (io/resource "friends.txt"))
 
+  (get (group-by-reminder-dates (io/resource "friends.txt")) {:month 2 :day 28})
+
+(let
+ [friends (group-by-reminder-dates (io/resource "friends.txt"))]
+  (->>
+   friends
+   (map (fn [[k v]] [k (count v)]))
+   (sort-by second >)
+   (take 10))
+  ; (sort-by (fn [[k v]] (count v)) friends))
+  )
+  
+
   (send-emails! (io/resource "friends.txt")
                 {:month 2 :day 10}
                 birthday-email-template)
 
 
-  (filled-email-template template (parse-line friend))
+;  (filled-email-template template (parse-line friend))
    
+  (matching-birthdee? {:month 2 :day 28} {:month 2 :day 28})
+ (matching-birthdee? {:month 4 :day 1} {:month 2 :day 28})
+
   ,)
